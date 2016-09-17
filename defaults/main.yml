@@ -1,0 +1,77 @@
+nut_nut_conf:
+  MODE: none
+  UPSD_OPTIONS:
+  UPSMON_OPTIONS:
+  POWEROFF_WAIT:
+
+nut_ups_conf:
+  globals:
+    chroot:
+    driverpath:
+    maxstartdelay:
+    maxretry: 3
+    retrydelay:
+    pollinterval:
+    synchronous:
+    user:
+  upses:
+    ups01:
+      driver: usbhid-ups
+      port: auto
+      desc: Primary UPS
+
+nut_upsd_conf:
+  MAXAGE:
+  STATEPATH:
+  LISTEN: []
+  MAXCONN:
+  CERTFILE:
+  CERTPATH:
+  CERTIDENT:
+  CERTREQUEST:
+
+nut_upsd_users:
+  admin:
+    password: password1
+    actions:
+      - set
+      - fsd
+    instcmds: all
+  monitor:
+    password: password2
+    upsmon master: ''
+
+nut_upsmon_conf:
+  DEADTIME: 15
+  FINALDELAY: 60
+  HOSTSYNC: 15
+  MINSUPPLIES: 1
+  MONITOR: []
+  NOCOMMWARNTIME: 300
+  NOTIFYCMD:
+  NOTIFYMSG: []
+  NOTIFYFLAG: []
+  POLLFREQ: 5
+  POLLFREQALERT: 5
+  POWERDOWNFLAG: /etc/killpower
+  RBWARNTIME: 43200
+  RUN_AS_USER: "{{nut_user}}"
+  SHUTDOWNCMD: '"/sbin/shutdown -h +0"'
+  CERTPATH:
+  CERTIDENT:
+  CERTHOST:
+  CERTVERIFY:
+  FORCESSL:
+
+nut_upssched_conf:
+  - CMDSCRIPT: /bin/upssched-cmd
+  - PIPEFN:
+  - LOCKFN:
+  - AT: []
+
+nut_hosts_conf:
+  MONITOR: []
+
+nut_upsset_conf: "# I_HAVE_SECURED_MY_CGI_DIRECTORY"
+
+nut_upsstats_html:

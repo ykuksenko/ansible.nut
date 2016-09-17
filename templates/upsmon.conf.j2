@@ -1,0 +1,10 @@
+#{{ansible_managed}}
+{%for entry in nut_upsmon_conf%}
+{%if nut_upsmon_conf[entry] is iterable and not nut_upsmon_conf[entry] is string%}
+{%for repeat in nut_upsmon_conf[entry]%}
+{{entry}} {{repeat}}
+{%endfor%}
+{%-else%}
+{%if nut_upsmon_conf[entry] != None %}{{entry}} {{nut_upsmon_conf[entry]}}{{'\n'}}{%endif%}
+{%-endif%}
+{%-endfor%}

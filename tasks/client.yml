@@ -1,0 +1,15 @@
+---
+- name: install nut client
+  package: >
+    name={{nut_client_package}}
+    state=latest
+
+- name: configure upsmon.conf
+  template: >
+    src=upsmon.conf.j2
+    dest={{nut_config_path}}/upsmon.conf
+    owner=root
+    group={{nut_user}}
+    mode=0640
+  notify:
+    - restart nut-monitor

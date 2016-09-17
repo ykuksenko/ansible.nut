@@ -1,0 +1,9 @@
+#{{ansible_managed}}
+{%macro option(name,value,quoted=false)%}
+{%if value != None%}{{name}}={%if quoted%}"{%endif%}{{value}}{%if quoted%}"{%endif%}{% endif %}
+{%endmacro%}
+
+{%for entry in nut_nut_conf%}
+{{option(entry,nut_nut_conf[entry])}}
+{%endfor%}
+

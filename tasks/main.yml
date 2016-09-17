@@ -1,0 +1,21 @@
+---
+- include_vars: "{{ansible_distribution}}.yml"
+
+- include: server.yml
+  when: >
+    nut_nut_conf.MODE == 'netserver' or
+    nut_nut_conf.MODE == 'standalone'
+
+- include: client.yml
+  when: >
+    nut_nut_conf.MODE == 'netserver' or
+    nut_nut_conf.MODE == 'netclient' or
+    nut_nut_conf.MODE == 'standalone'
+
+- include: common.yml
+  when: >
+    nut_nut_conf.MODE == 'netserver' or
+    nut_nut_conf.MODE == 'netclient' or
+    nut_nut_conf.MODE == 'standalone'
+
+- include: state.yml

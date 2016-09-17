@@ -1,0 +1,12 @@
+#{{ansible_managed}}
+{%for global in nut_ups_conf.globals%}
+{%if nut_ups_conf.globals[global] != none%}{{global}} = {{nut_ups_conf.globals[global]}}
+{%endif%}
+{%endfor%}
+
+{%for ups in nut_ups_conf.upses%}
+[{{ups}}]
+{%for option in nut_ups_conf.upses[ups]%}
+  {{option}} = {{nut_ups_conf.upses[ups][option]}}
+{%endfor%}
+{%endfor%}

@@ -1,0 +1,13 @@
+#{{ansible_managed}}
+{%for user in nut_upsd_users%}
+[{{user}}]
+{%for option in nut_upsd_users[user]%}
+{%-if nut_upsd_users[user][option] is iterable and not nut_upsd_users[user][option] is string%}
+{%-for repeat in nut_upsd_users[user][option]%}
+  {{option}} = {{repeat}}{{'\n'}}
+{%-endfor%}
+{%-else%}
+  {{option}}{%if not nut_upsd_users[user][option] == ''%} = {{nut_upsd_users[user][option]}}{% endif %}{{'\n'}}
+{%-endif%}
+{%endfor%}
+{%endfor%}

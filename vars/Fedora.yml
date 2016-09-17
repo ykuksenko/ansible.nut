@@ -1,0 +1,8 @@
+---
+nut_client_package: nut-client
+nut_server_package: nut
+nut_client_service: nut-monitor
+nut_server_service: nut-server
+nut_driver_service: nut-driver
+nut_config_path: /etc/ups
+nut_user: nut

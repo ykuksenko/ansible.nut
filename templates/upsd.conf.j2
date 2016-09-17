@@ -1,0 +1,10 @@
+#{{ansible_managed}}
+{%for entry in nut_upsd_conf%}
+{%if nut_upsd_conf[entry] is iterable and not nut_upsd_conf[entry] is string%}
+{%for repeat in nut_upsd_conf[entry]%}
+{{entry}} {{repeat}}
+{%endfor%}
+{%-else%}
+{%if nut_upsd_conf[entry] != None %}{{entry}} {{nut_upsd_conf[entry]}}{{'\n'}}{%endif%}
+{%-endif%}
+{%endfor%}

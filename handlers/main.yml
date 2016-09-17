@@ -1,0 +1,19 @@
+- name: restart nut-driver
+  service: name={{nut_driver_service}} state=restarted
+  when: >
+    nut_nut_conf.MODE == 'netserver' or
+    nut_nut_conf.MODE == 'standalone'
+
+- name: restart nut-monitor
+  service: name={{nut_client_service}} state=restarted
+  when: >
+    nut_nut_conf.MODE == 'netserver' or
+    nut_nut_conf.MODE == 'netclient' or
+    nut_nut_conf.MODE == 'standalone'
+
+- name: restart nut-server
+  service: name={{nut_server_service}} state=restarted
+  when: >
+    nut_nut_conf.MODE == 'netserver' or
+    nut_nut_conf.MODE == 'standalone'
+

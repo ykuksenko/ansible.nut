@@ -1,0 +1,9 @@
+---
+- name: configure nut.conf
+  template: >
+    dest={{nut_config_path}}/nut.conf
+    src=nut.conf.j2
+    owner=root
+    group={{nut_user}}
+    mode=0640
+  register: nut_conf_result
