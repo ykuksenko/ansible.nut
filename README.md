@@ -70,8 +70,9 @@ NUT Server that will monitor itself with a Cyberpower 1350C UPS:
           nut_upsd_users:
             admin:
               password: password1
-              actions: set
-              actions: fsd
+              actions:
+                - set
+                - fsd
               instcmds: all
             monitor:
               password: password2
